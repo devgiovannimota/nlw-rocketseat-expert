@@ -8,11 +8,11 @@ datasource db {
 }
 
 model Poll {
-  id         String       @id @default(uuid())
-  title      String
-  createdAt  DateTime     @default(now())
-  updatedAt  DateTime     @default(now())
-  PollOption PollOption[]
+  id        String       @id @default(uuid())
+  title     String
+  createdAt DateTime     @default(now())
+  updatedAt DateTime     @default(now())
+  options   PollOption[]
 }
 
 model PollOption {
