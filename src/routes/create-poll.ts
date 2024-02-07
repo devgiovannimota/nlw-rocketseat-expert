@@ -9,7 +9,9 @@ export async function createPoll(app: FastifyInstance) {
       options: z.array(z.string()),
     });
 
+    // Para evitar problemas, createmany fará inserção na tabela polloptions ao mesmo tempo
     const { title, options } = createPollBody.parse(request.body);
+
     const poll = await prisma.poll.create({
       data: {
         title,
@@ -22,7 +24,6 @@ export async function createPoll(app: FastifyInstance) {
         },
       },
     });
-
     return reply.status(201).send({ pollid: poll.id });
   });
 }
